@@ -1,0 +1,54 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+      <label for="usuario">Usuario</label>
+      <select 
+        #usuario="ngModel" 
+        class="form-control" 
+        [class.is-invalid]="!usuario.valid && usuario.touched" 
+        id="usuario"
+        name="usuario" 
+        [(ngModel)]="carrinho.usuario" 
+        required>
+        <option *ngFor="let u of usuarios" [ngValue]="u">{{u.nome}}</option> 
+      </select>
+      <div *ngIf="!usuario.valid && usuario.touched" class="text-danger">
+        escolha o usuario.
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="item">Item</label>
+        <select 
+          #item="ngModel" 
+          class="form-control" 
+          [class.is-invalid]="!item.valid && item.touched" 
+          id="item"
+          name="item" 
+          [(ngModel)]="carrinho.item" 
+          required>
+          <option *ngFor="let i of itens" [ngValue]="i">{{i.nome}}</option> 
+        </select>
+        <div *ngIf="!item.valid && item.touched" class="text-danger">
+          escolha o item.
+        </div>
+      </div>    
+
+      <div class="form-group">
+          <label for="quantidade">Quantidade</label>
+          <input 
+            class="form-control" 
+            id="quantidade" 
+            rows="3" 
+            placeholder="quantidade" name="quantidade"
+            #quantidade="ngModel" 
+            [(ngModel)]="carrinho.quantidade" 
+            [class.is-invalid]="!quantidade.valid && quantidade.touched"
+            required>
+          <div *ngIf="!quantidade.valid && quantidade.touched" class="text-danger">
+            digite a quantidade.
+          </div>
+        </div>
+      
+  <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Salvar</button>
+</form>
