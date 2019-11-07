@@ -35,96 +35,96 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MvcResult;
 
-import com.example.carrinhocompra.usuario.Usuario;
-import com.example.carrinhocompra.usuario.UsuarioRepository;
+import com.example.carrinhocompra.item.Item;
+import com.example.carrinhocompra.item.ItemRepository;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CarrinhocompraApplication.class)
 @WebAppConfiguration
-public class UsuarioRestControllerTest extends BaseTestRestController {
+public class ItemRestControllerTest extends BaseTestRestController {
 
-	Usuario usuario;
-	Usuario usuario2;
-	Usuario usuarioInvalido;
-	Usuario usuarioInvalido2;
-	Usuario usuarioInvalido3;
-	private List<Usuario> listaTipos;
+	Item item;
+	Item item2;
+	Item itemInvalido;
+	Item itemInvalido2;
+	Item itemInvalido3;
+	private List<Item> listaTipos;
 
 
 	@MockBean
-	UsuarioRepository usuarioRepository;
+	ItemRepository itemRepository;
 
 	@Before
 	public void setup() throws Exception {
 
 		mockMvc = webAppContextSetup(webApplicationContext).build();
 		
-		usuario = new Usuario("1", "teste", "teste", 1.0);
-		usuario2 = new Usuario("1", "teste", "teste", 1.0);
-		usuarioInvalido = new Usuario(null, "teste", "teste", 1.0);
-		usuarioInvalido2 = new Usuario("1", "teste", "teste", 1.0);
+		item = new Item("1", "teste", 1.0, null);
+		item2 = new Item("1", "teste", 1.0, null);
+		itemInvalido = new Item(null, "teste", 1.0, null);
+		itemInvalido2 = new Item("1", "teste", 1.0, null);
 
-		listaTipos = Arrays.asList(new Usuario[] { usuario, usuario2 });
+		listaTipos = Arrays.asList(new Item[] { item, item2 });
 
-		when(usuarioRepository.save(any(Usuario.class))).thenReturn(usuario);
-		when(usuarioRepository.findById("1")).thenReturn(Optional.of(usuario));
-		when(usuarioRepository.findById(null)).thenReturn(Optional.ofNullable(null));
-		when(usuarioRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(listaTipos));
-		when(usuarioRepository.findAll()).thenReturn(listaTipos);
+		when(itemRepository.save(any(Item.class))).thenReturn(item);
+		when(itemRepository.findById("1")).thenReturn(Optional.of(item));
+		when(itemRepository.findById(null)).thenReturn(Optional.ofNullable(null));
+		when(itemRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(listaTipos));
+		when(itemRepository.findAll()).thenReturn(listaTipos);
 
-		doNothing().when(usuarioRepository).deleteById(usuario.getId());
+		doNothing().when(itemRepository).deleteById(item.getId());
 		
 	}
 
 	@Test
-	public void criaUsuario() throws Exception {
-		//Usuario Válido 
-		String validUsuarioJson = json(usuario);
+	public void criaItem() throws Exception {
+		//Item Válido 
+		String validItemJson = json(item);
 
-		 MvcResult result = this.mockMvc.perform(post("/api/usuario").contentType(contentType).content(validUsuarioJson))
+		 MvcResult result = this.mockMvc.perform(post("/api/item").contentType(contentType).content(validItemJson))
 				 .andExpect(status().is2xxSuccessful())
 				 .andReturn();
 		 
 		assertThat(result.getResponse().getStatus()).isEqualTo(201);
 		
-		//Usuario Existente
-		when(usuarioRepository.findByNome((any(String.class)))).thenReturn(listaTipos);
-		String invalidUsuarioJson = json(usuario);
+		//Item Existente
+		when(itemRepository.findByNome((any(String.class)))).thenReturn(listaTipos);
+		String invalidItemJson = json(item);
 
-		result = this.mockMvc.perform(post("/api/usuario/").contentType(contentType).content(invalidUsuarioJson))
+		result = this.mockMvc.perform(post("/api/item/").contentType(contentType).content(invalidItemJson))
 				.andExpect(status().is4xxClientError())
 				.andReturn();
 		assertThat(result.getResponse().getStatus()).isEqualTo(400);
 		
-		//Usuario Invalido
-		 invalidUsuarioJson = json(new Usuario(null, "", "", null));
+		//Item Invalido
+		 invalidItemJson = json(new Item(null, "", null, null));
 
-		 result = this.mockMvc.perform(post("/api/usuario/").contentType(contentType).content(invalidUsuarioJson))
+		 result = this.mockMvc.perform(post("/api/item/").contentType(contentType).content(invalidItemJson))
 				.andExpect(status().is4xxClientError())
 				.andReturn();
 		assertThat(result.getResponse().getStatus()).isEqualTo(400);
 	}
 
 	@Test
-	public void excluiUsuario() throws Exception {
+	public void excluiItem() throws Exception {
 		//Existente
-		MvcResult result = this.mockMvc.perform(delete("/api/usuario/" + usuario.getId())).andExpect(status().isOk()).andReturn();
-		verify(usuarioRepository, times(1)).deleteById(usuario.getId());
+		MvcResult result = this.mockMvc.perform(delete("/api/item/" + item.getId())).andExpect(status().isOk()).andReturn();
+		verify(itemRepository, times(1)).deleteById(item.getId());
 		assertThat(result.getResponse().getStatus()).isEqualTo(200);		
 		
 	}
 
 	@Test
 	public void buscarLista() throws Exception {
-		MvcResult result = mockMvc.perform(get("/api/usuario/")).andExpect(status().isOk()).andReturn();
+		MvcResult result = mockMvc.perform(get("/api/item/")).andExpect(status().isOk()).andReturn();
 		assertThat(result.getResponse().getStatus()).isEqualTo(200);
 
 	}
 	
 	@Test
 	public void buscarPorId() throws Exception {
-		MvcResult result = mockMvc.perform(get("/api/usuario/" + usuario.getId())).andExpect(status().isOk()).andReturn();
+		MvcResult result = mockMvc.perform(get("/api/item/" + item.getId())).andExpect(status().isOk()).andReturn();
 		assertThat(result.getResponse().getStatus()).isEqualTo(200);
 
 	}

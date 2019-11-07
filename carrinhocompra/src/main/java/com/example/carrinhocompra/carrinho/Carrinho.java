@@ -54,4 +54,14 @@ public class Carrinho {
 		this.item = item;
 	}
 
+	public Carrinho(String id, int quantidade, Usuario usuario, Item item) {
+		super();
+		this.id = id;
+		this.quantidade = quantidade;
+		this.usuario = usuario;
+		this.item = item;
+	}
+
+	
+	
 }

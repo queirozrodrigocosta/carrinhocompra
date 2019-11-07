@@ -54,4 +54,14 @@ public class Item {
 		this.usuario = usuario;
 	}
 
+	public Item(String id, String nome, Double valor, Usuario usuario) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.valor = valor;
+		this.usuario = usuario;
+	}
+	
+	
+
 }
