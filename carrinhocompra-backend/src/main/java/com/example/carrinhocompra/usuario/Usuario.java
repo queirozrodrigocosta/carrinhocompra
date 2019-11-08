@@ -66,6 +66,12 @@ public class Usuario {
 		this.total = total;
 	}
 
+	public Usuario() {
+		super();
+	}
+
+	
+	
 //	public List<Item> getItens() {
 //		return item;
 //	}

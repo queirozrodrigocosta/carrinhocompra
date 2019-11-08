@@ -62,6 +62,10 @@ public class Item {
 		this.usuario = usuario;
 	}
 	
+	public Item() {
+		super();
+	}
+	
 	
 
 }
