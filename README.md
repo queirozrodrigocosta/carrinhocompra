@@ -1,6 +1,6 @@
 Para rodar o sistema deve-se:
 - clonar a raiz do projeto "git clone https://github.com/queirozrodrigocosta/carrinhocompra.git".
-- abrir a pasta "carrinhocompra-backend" e executar os comandos maven "mvn updade", "mvn test" e "mvn install", executar a aplicação spring na porta 8080 em algum servidor de aplicação com o arquivo *.JAR gerado na pasta "target"
+- abrir a pasta "carrinhocompra-backend" e executar os comandos maven "mvn test" e "mvn install", executar a aplicação spring na porta 8080 em algum servidor de aplicação com o arquivo *.JAR gerado na pasta "target"
 - abrir a pasta "carrinhocompra-frontend" e executar os comandos npm "npm install" e angular "ng serve"
 - abrir o navegador e testar a aplicação localmente na porta que o npm disponibilizou
 
