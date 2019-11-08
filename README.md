@@ -1,6 +1,3 @@
-# Carrinho de compras
-
-Carrinho de Compras
 Definição:
 Criar uma solução para carrinho de compras onde seja possível criar Usuários, Itens e o Carrinho.
 Esta solução deve ser obrigatoriamente escrita utilizando Java. Fica livre a utilização de qualquer outra
