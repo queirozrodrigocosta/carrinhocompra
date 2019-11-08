@@ -1,7 +1,7 @@
 Para rodar o sistema deve-se:
 - clonar a raiz do projeto "git clone https://github.com/queirozrodrigocosta/carrinhocompra.git".
-- abrir a pasta "carrinhocompra-backend" e executar os comandos maven "updade", "test" e "install", executar a aplicação spring na porta 8080 em algum servidor de aplicação com o arquivo *.JAR gerado na pasta "target"
-- abrir a pasta "carrinhocompra-frontend" e executar os comandos npm "install" e "ng serve"
+- abrir a pasta "carrinhocompra-backend" e executar os comandos maven "mvn updade", "mvn test" e "mvn install", executar a aplicação spring na porta 8080 em algum servidor de aplicação com o arquivo *.JAR gerado na pasta "target"
+- abrir a pasta "carrinhocompra-frontend" e executar os comandos npm "npm install" e angular "ng serve"
 - abrir o navegador e testar a aplicação localmente na porta que o npm disponibilizou
 
 Definição: Criar uma solução para carrinho de compras onde seja possível criar Usuários, Itens e o Carrinho. Esta solução deve ser obrigatoriamente escrita utilizando Java. Fica livre a utilização de qualquer outra ferramenta/lib que o candidato achar necessário para completar a tarefa. A solução deve conter testes unitários com cobertura minima de 60% e a aplicação deve ser Threadsafe. 
