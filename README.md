@@ -4,7 +4,7 @@
     - abrir a pasta "carrinhocompra-frontend" e executar os comandos npm "npm install" e angular "ng serve"
     - abrir o navegador e testar a aplicação localmente na porta que o npm disponibilizou
 
-- A estratégia adota para solução foi criar uma classe para cada entidade "Usuario", "Item" e "Carrrinho", e implementar a regra no código fazendo com que um carrinho tenha vários itens para cada usuário disntinto, cada item deve ter um quantidade no carrinho deste usuario, e o usuario tem o valor total do carrinho com a soma desses itens multiplicado pela quantidade.
+- A estratégia adota para solução foi criar uma classe para cada entidade "Usuario", "Item" e "Carrrinho" como tabela no banco de dados, e implementar a regra no código fazendo com que um carrinho tenha vários itens para cada usuário disntinto, cada item deve ter um quantidade no carrinho deste usuario, e o usuario tem o valor total do carrinho com a soma desses itens multiplicado pela quantidade.
 
 - Definição: Criar uma solução para carrinho de compras onde seja possível criar Usuários, Itens e o Carrinho. Esta solução deve ser obrigatoriamente escrita utilizando Java. Fica livre a utilização de qualquer outra ferramenta/lib que o candidato achar necessário para completar a tarefa. A solução deve conter testes unitários com cobertura minima de 60% e a aplicação deve ser Threadsafe. 
 
