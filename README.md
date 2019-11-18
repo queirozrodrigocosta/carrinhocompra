@@ -3,6 +3,7 @@
     - abrir a pasta "carrinhocompra-backend" e executar os comandos maven "mvn test" e "mvn install", executar a aplicação spring na porta 8080 em algum servidor de aplicação com o arquivo *.JAR gerado na pasta "target"
     - abrir a pasta "carrinhocompra-frontend" e executar os comandos npm "npm install" e angular "ng serve"
     - abrir o navegador e testar a aplicação localmente na porta que o npm disponibilizou
+    - ter o servidor MongoDB rodando localmente
 
 - A estratégia adota para solução foi criar uma classe para cada entidade "Usuario", "Item" e "Carrrinho" como tabela no banco de dados, e implementar a regra no código fazendo com que um carrinho tenha vários itens para cada usuário disntinto, cada item deve ter um quantidade no carrinho deste usuario, e o usuario tem o valor total do carrinho com a soma desses itens multiplicado pela quantidade.
 
